@@ -15,6 +15,8 @@ const domain = (url: string) => {
   return link.hostname
 }
 
+const formatDate = (date: string) => useDateFormat(date, 'YYYY-MM-DD')
+
 news.getNews()
 </script>
 
@@ -37,7 +39,8 @@ news.getNews()
           >
             SELECT
           </button>
-
+          <span>{{ formatDate(post.createdAt) }}</span>
+          <span>{{ post.id }}</span>
           <a :href="post.url" target="_blank" class="font-bold">{{
             post.title
           }}</a>
