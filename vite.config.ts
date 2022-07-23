@@ -48,10 +48,7 @@ export default defineConfig({
         '@vueuse/core',
       ],
       dts: 'src/auto-imports.d.ts',
-      dirs: [
-        'src/composables',
-        'src/store',
-      ],
+      dirs: ['src/composables', 'src/store'],
       vueTemplate: true,
     }),
 
@@ -140,7 +137,12 @@ export default defineConfig({
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
-    onFinished() { generateSitemap() },
+    onFinished() {
+      generateSitemap()
+    },
+    includedRoutes() {
+      return []
+    },
   },
 
   ssr: {
