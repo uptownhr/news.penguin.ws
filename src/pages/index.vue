@@ -4,61 +4,48 @@ const user = useUserStore()
 const name = $ref(user.savedName)
 const router = useRouter()
 const go = () => {
-  if (name)
-    router.push(`/hi/${encodeURIComponent(name)}`)
+  if (name) router.push(`/hi/${encodeURIComponent(name)}`)
 }
 
 const { t } = useI18n()
+
+const domain = (url: string) => {
+  const link = new URL(url)
+
+  return link.hostname
+}
 
 news.getNews()
 </script>
 
 <template>
   <div>
-    <div text-4xl>
-      <div i-carbon-campsite inline-block />
-    </div>
+    <ol class="list-inside space-y-2">
+      <li v-for="post in news.posts" :key="post.id">
+        <div class="flex space-x-4 items-center">
+          <button
+            @click="news.skipNews(post.id)"
+            type="button"
+            class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            SKIP
+          </button>
+          <button
+            @click="news.selectNews(post.id)"
+            type="button"
+            class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            SELECT
+          </button>
 
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank">
-        Vitesse
-      </a>
-    </p>
+          <a :href="post.url" target="_blank" class="font-bold">{{
+            post.title
+          }}</a>
 
-    <p>
-      <em text-sm opacity-75>{{ t('intro.desc') }}</em>
-    </p>
-
-    <pre>{{news}}</pre>
-
-    <div py-4 />
-
-    <input
-      id="input"
-      v-model="name"
-      :placeholder="t('intro.whats-your-name')"
-      :aria-label="t('intro.whats-your-name')"
-      type="text"
-      autocomplete="false"
-      p="x4 y2"
-      w="250px"
-      text="center"
-      bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
-      outline="none active:none"
-      @keydown.enter="go"
-    >
-    <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
-
-    <div>
-      <button
-        btn m-3 text-sm
-        :disabled="!name"
-        @click="go"
-      >
-        {{ t('button.go') }}
-      </button>
-    </div>
+          <span>{{ domain(post.url) }}</span>
+        </div>
+      </li>
+    </ol>
   </div>
 </template>
 

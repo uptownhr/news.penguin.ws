@@ -1,4 +1,9 @@
 @import './markdown.css';
+@import '@unocss/reset/normalize.css';
+@import '@unocss/reset/sanitize/sanitize.css';
+@import '@unocss/reset/sanitize/assets.css';
+@import '@unocss/reset/eric-meyer.css';
+@import '@unocss/reset/tailwind.css';
 
 html,
 body,
@@ -17,7 +22,7 @@ html.dark {
 }
 
 #nprogress .bar {
-  background: rgb(13,148,136);
+  background: rgb(13, 148, 136);
   opacity: 0.75;
   position: fixed;
   z-index: 1031;
