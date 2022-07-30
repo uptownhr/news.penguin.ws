@@ -114,6 +114,7 @@ const createContact = () => {
           <span>{{ formatDate(contact.createdAt) }}</span>
           <span>{{ contact.id }}</span>
           <span>{{ contact.email }}</span>
+          <span>{{ contact.name }}</span>
         </div>
       </li>
     </ol>
