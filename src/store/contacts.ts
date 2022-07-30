@@ -34,9 +34,21 @@ export const useContactStore = defineStore('contacts', () => {
     contacts.value.push(res.data)
   }
 
+  const removeContact = async (contactId: number) => {
+    const res = await axios.delete<Contact>(
+      `//${import.meta.env.VITE_PENGUIN_API}/contact/${contactId}`,
+    )
+
+    contacts.value.splice(
+      contacts.value.findIndex((c) => c.id === res.data.id),
+      1,
+    )
+  }
+
   return {
     getContacts,
     createContact,
+    removeContact,
     contacts,
   }
 })

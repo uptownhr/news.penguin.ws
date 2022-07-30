@@ -8,11 +8,23 @@ const createContactForm = reactive({
   name: '',
   email: '',
 })
+
+const createContact = () => {
+  contacts.createContact({
+    email: createContactForm.email,
+    name: createContactForm.name,
+  })
+  createContactForm.name = ''
+  createContactForm.email = ''
+}
 </script>
 
 <template>
   <div>
-    <form class="space-y-8 divide-y divide-gray-200">
+    <form
+      @submit.prevent="createContact(createContactForm)"
+      class="space-y-8 divide-y divide-gray-200"
+    >
       <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
         <div>
           <div>
@@ -37,6 +49,7 @@ const createContactForm = reactive({
               <div class="mt-1 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg flex rounded-md shadow-sm">
                   <input
+                    v-model="createContactForm.name"
                     type="text"
                     name="username"
                     id="username"
@@ -59,6 +72,7 @@ const createContactForm = reactive({
               <div class="mt-1 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg flex rounded-md shadow-sm">
                   <input
+                    v-model="createContactForm.email"
                     type="email"
                     name="email"
                     id="email"
@@ -67,6 +81,9 @@ const createContactForm = reactive({
                   />
                 </div>
               </div>
+              <pre>
+                {{ createContactForm }}
+              </pre>
             </div>
           </div>
         </div>
@@ -87,6 +104,13 @@ const createContactForm = reactive({
     <ol class="list-inside space-y-2">
       <li v-for="contact in contacts.contacts" :key="contact.id">
         <div class="flex space-x-4 items-center">
+          <button
+            @click="contacts.removeContact(contact.id)"
+            type="button"
+            class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Remove
+          </button>
           <span>{{ formatDate(contact.createdAt) }}</span>
           <span>{{ contact.id }}</span>
           <span>{{ contact.email }}</span>
