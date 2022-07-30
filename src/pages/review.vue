@@ -3,10 +3,6 @@ const news = useNewsStore()
 const user = useUserStore()
 const name = $ref(user.savedName)
 const router = useRouter()
-const go = () => {
-  if (name) router.push(`/hi/${encodeURIComponent(name)}`)
-}
-
 const { t } = useI18n()
 
 const domain = (url: string) => {
