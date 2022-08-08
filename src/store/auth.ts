@@ -1,7 +1,15 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import axios from 'axios'
 import type { Ref } from 'vue'
-import 'localstorage-polyfill'
+
+type optional = string | null
+
+const localStorage = import.meta.env.SSR
+  ? {
+      setItem: (): optional => null,
+      getItem: (): optional => null,
+    }
+  : window.localStorage
 
 interface LoginInput {
   username: string
@@ -31,7 +39,11 @@ export const useAuthStore = defineStore(
       isLoggedIn,
     }
   },
-  { persist: true },
+  {
+    persist: {
+      storage: localStorage,
+    },
+  },
 )
 
 if (import.meta.hot)
