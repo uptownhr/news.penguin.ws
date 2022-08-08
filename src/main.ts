@@ -6,7 +6,7 @@ import generatedRoutes from '~pages'
 
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
-import 'uno.css'
+
 import { loggedInGuard } from '~/guards/auth.guard'
 
 const routes = setupLayouts(generatedRoutes)

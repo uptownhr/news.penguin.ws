@@ -5,7 +5,7 @@
     "antfu/if-newline": "off",
     "arrow-parens": "off",
     "vue/component-name-in-template-casing": ["error", "PascalCase", {
-      "registeredComponentsOnly": false
+      "registeredComponentsOnly": true
     }]
   }
 }

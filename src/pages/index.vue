@@ -5,6 +5,7 @@
 </template>
 
 <route lang="yaml">
+name: home
 meta:
   layout: home
 </route>
