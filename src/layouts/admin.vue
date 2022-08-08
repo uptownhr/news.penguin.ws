@@ -261,8 +261,8 @@ import {
   PhoneIcon,
   UsersIcon,
   XIcon,
-} from '@heroicons/vue/outline'
-import { SearchIcon } from '@heroicons/vue/solid'
+} from '@heroicons/vue/outline/index'
+import { SearchIcon } from '@heroicons/vue/solid/index'
 
 const route = useRoute()
 

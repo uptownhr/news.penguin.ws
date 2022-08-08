@@ -8,7 +8,7 @@ import {
   MenuItem,
   MenuItems,
 } from '@headlessui/vue'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
+import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline/index'
 
 const navigation = [
   { name: 'Home', to: { name: 'home' }, current: false },
