@@ -1,6 +1,7 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import axios from 'axios'
 import type { Ref } from 'vue'
+import 'localstorage-polyfill'
 
 interface LoginInput {
   username: string

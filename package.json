@@ -41,6 +41,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
     "https-localhost": "^4.7.1",
+    "localstorage-polyfill": "^1.0.1",
     "markdown-it-link-attributes": "^4.0.0",
     "markdown-it-prism": "^2.2.4",
     "pnpm": "^7.5.2",
