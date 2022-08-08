@@ -7,6 +7,7 @@ import generatedRoutes from '~pages'
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
 import 'uno.css'
+import { loggedInGuard } from '~/guards/auth.guard'
 
 const routes = setupLayouts(generatedRoutes)
 
@@ -16,7 +17,14 @@ export const createApp = ViteSSG(
   { routes, base: import.meta.env.BASE_URL },
   (ctx) => {
     // install all modules under `modules/`
-    Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
-      .forEach(i => i.install?.(ctx))
+    Object.values(
+      import.meta.glob<{ install: UserModule }>('./modules/*.ts', {
+        eager: true,
+      }),
+    ).forEach((i) => i.install?.(ctx))
+
+    const auth = useAuthStore()
+
+    ctx.router.beforeEach(loggedInGuard(auth))
   },
 )

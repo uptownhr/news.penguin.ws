@@ -49,6 +49,7 @@ news.getNews()
 </template>
 
 <route lang="yaml">
+name: reviews
 meta:
   layout: home
 </route>

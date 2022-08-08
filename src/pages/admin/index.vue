@@ -122,6 +122,7 @@ const createContact = () => {
 </template>
 
 <route lang="yaml">
+name: contacts
 meta:
   layout: home
 </route>

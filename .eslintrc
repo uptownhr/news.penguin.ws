@@ -1,8 +1,11 @@
 {
-  "extends": "@antfu",
+  "extends": ["@antfu", "prettier"],
   "rules": {
     "no-console": "off",
     "antfu/if-newline": "off",
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "vue/component-name-in-template-casing": ["error", "PascalCase", {
+      "registeredComponentsOnly": false
+    }]
   }
 }
