@@ -2,7 +2,6 @@
 const contacts = useContactStore()
 const formatDate = (date: string) => useDateFormat(date, 'YYYY-MM-DD')
 
-contacts.getContacts()
 
 const createContactForm = reactive({
   name: '',
